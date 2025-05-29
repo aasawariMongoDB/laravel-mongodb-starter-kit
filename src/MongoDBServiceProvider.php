@@ -1,6 +1,6 @@
 <?php
 
-namespace Aasawari\MongoDBStarterKit\Src;
+namespace AasawariSahasrabuddhe\MongodbStarterKit;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -14,9 +14,9 @@ class MongoDbServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        // Allow publishing the config
+        // Allow publishing the config file
         $this->publishes([
-            __DIR__.'/../config/mongodb.php' => config_path('mongodb.php'),
+            __DIR__.'/../config/mongodb.php' => $this->app->basePath('config/mongodb.php'),
         ], 'config');
     }
 }
