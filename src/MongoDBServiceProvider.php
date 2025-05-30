@@ -3,30 +3,20 @@
 namespace AasawariSahasrabuddhe\MongodbStarterKit;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Config;
 
 class MongoDbServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/mongodb.php', 'mongodb');
-
-        $mongodbConnections = Config::get('mongodb.connections');
-
-        if (is_array($mongodbConnections)) {
-            foreach ($mongodbConnections as $name => $connection) {
-                Config::set("database.connections.{$name}", $connection);
-            }
-        }
-        //setting to default
-        Config::set('database.default', Config::get('mongodb.default', 'mongodb'));
+        // Merge into Laravel's native `database` config
+        $this->mergeConfigFrom(__DIR__ . '/../config/database.php', 'database');
     }
 
     public function boot()
     {
-        // Publish the package config to application's config directory
+        // Use $this->app->configPath() instead of config_path()
         $this->publishes([
-            __DIR__ . '/../config/mongodb.php' => $this->app->basePath('config/mongodb.php'),
+            __DIR__ . '/../config/database.php' => $this->app->configPath('database.php'),
         ], 'config');
     }
 }
