@@ -20,9 +20,7 @@
     },
     "extra": {
       "laravel": {
-        "providers": [
-          "AasawariSahasrabuddhe\\MongodbStarterKit\\MongoDBServiceProvider"
-        ]
+        "providers": [ "AasawariSahasrabuddhe\\MongodbStarterKit\\MongoDbServiceProvider" ]
       }
     },
     "minimum-stability": "dev",
