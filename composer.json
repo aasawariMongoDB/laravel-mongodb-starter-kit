@@ -54,8 +54,13 @@
             "@php artisan key:generate --ansi",
             "@php scripts/check-mongodb-extension.php",
             "@php artisan config:cache"
-        ]
-    },
+        ],
+        "setup-mongodb": [
+            "@php scripts/check-mongodb-extension.php",
+            "@php artisan config:clear",
+            "@php artisan config:cache"
+                ]
+            },
     "extra": {
         "laravel": {
             "dont-discover": []
